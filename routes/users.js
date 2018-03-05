@@ -6,8 +6,8 @@ const myData = { title: 'Promise Express' };
 
 /* GET /promise/ */
 router.get('/', function(req, res) {
-    new Promise(function(res, rej) {
-        res(myData);
+    new Promise(function(resolve, reject) {
+        resolve(myData);
     }).then(function(d) {
         res.render('index', d);
     });
