@@ -1,9 +1,16 @@
 var express = require('express');
 var router = express.Router();
+var Promise = require('bluebird');
 
-/* GET users listing. */
-router.get('/', function(req, res, next) {
-  res.send('respond with a resource');
+const myData = { title: 'Promise Express' };
+
+/* GET /promise/ */
+router.get('/', function(req, res) {
+    new Promise(function(res, rej) {
+        res(myData);
+    }).then(function(d) {
+        res.render('index', d);
+    });
 });
 
 module.exports = router;
